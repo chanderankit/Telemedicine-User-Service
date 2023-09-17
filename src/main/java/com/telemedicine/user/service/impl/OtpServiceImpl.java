@@ -25,6 +25,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
+@EnableAsync
 public class OtpServiceImpl implements OtpService {
 
     @Value("${redis.time-to-live}")
@@ -60,7 +62,7 @@ public class OtpServiceImpl implements OtpService {
         this.authGateway = authGateway;
     }
 
-    @Async
+//    @Async
     @Override
     public void sendOtp(OtpRequest request) {
 
@@ -159,7 +161,7 @@ public class OtpServiceImpl implements OtpService {
     }
 
     private void saveOtpInRedis(String email, String otp) {
-        redisTemplate.opsForValue().set(email, String.valueOf(otp), OTP_TTL, TimeUnit.MILLISECONDS);
         log.info("----OtpServiceImpl:generateOtp::--otp is {}--stored in redis with key {}--", otp, email);
+        redisTemplate.opsForValue().set(email, String.valueOf(otp), OTP_TTL, TimeUnit.MILLISECONDS);
     }
 }

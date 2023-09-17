@@ -7,6 +7,7 @@ import com.telemedicine.user.model.dao.DoctorDetailsDao;
 import com.telemedicine.user.model.dao.RoleDao;
 import com.telemedicine.user.model.dao.UserDao;
 import com.telemedicine.user.model.dto.User;
+import com.telemedicine.user.model.payload.request.OtpRequest;
 import com.telemedicine.user.repository.DoctorDetailsRepository;
 import com.telemedicine.user.repository.RoleRepository;
 import com.telemedicine.user.repository.UserRepository;
@@ -80,11 +81,11 @@ public class UserServiceImpl implements UserService {
         }
 
 
-        //sending otp mail to user
-//        otpService.sendOtp(OtpRequest.builder()
-//                .email(user.getEmail())
-//                .userName(userDb.getFirstName().concat(userDb.getLastName()))
-//                .build());
+//        sending otp mail to user
+        otpService.sendOtp(OtpRequest.builder()
+                .email(user.getEmail())
+                .userName(userDb.getFirstName().concat(userDb.getLastName()))
+                .build());
 
         return user;
     }

@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import java.util.List;
 
 @SpringBootApplication
-@EnableAsync
 @Slf4j
 public class UserServiceApplication implements CommandLineRunner {
 

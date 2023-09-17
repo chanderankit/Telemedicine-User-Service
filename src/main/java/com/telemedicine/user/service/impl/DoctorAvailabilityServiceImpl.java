@@ -39,7 +39,7 @@ public class DoctorAvailabilityServiceImpl implements DoctorAvailabilityService 
     }
 
     @Override
-    public List<DoctorSlot> createDoctorAvailability(DoctorSlot doctorSlot) {
+    public List<DoctorSlot> createDoctorSlot(DoctorSlot doctorSlot) {
         try {
             LocalTime startTime = LocalTime.parse(doctorSlot.getStartTime());
             LocalTime endTime = LocalTime.parse(doctorSlot.getEndTime());

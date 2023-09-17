@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface DoctorAvailabilityService {
-    List<DoctorSlot> createDoctorAvailability(DoctorSlot doctorSlot);
+    List<DoctorSlot> createDoctorSlot(DoctorSlot doctorSlot);
     DoctorAvailabilitySlot getSlotById(long id);
     List<DoctorAvailabilitySlotDto> getDoctorSlotsByDoctorId(UUID doctorId);
 }

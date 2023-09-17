@@ -16,16 +16,16 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/doctors-slots")
-public class DoctorAvailabilityController implements Serializable {
+public class DoctorSlotController implements Serializable {
     private final DoctorAvailabilityService doctorAvailabilityService;
     @Autowired
-    public DoctorAvailabilityController(DoctorAvailabilityService doctorAvailabilityService) {
+    public DoctorSlotController(DoctorAvailabilityService doctorAvailabilityService) {
         this.doctorAvailabilityService = doctorAvailabilityService;
     }
 
     @PostMapping
     public ResponseEntity<List<DoctorSlot>> addDoctorSlot(@Valid @RequestBody DoctorSlot slot) {
-        List<DoctorSlot> doctorSlot = doctorAvailabilityService.createDoctorAvailability(slot);
+        List<DoctorSlot> doctorSlot = doctorAvailabilityService.createDoctorSlot(slot);
         return new ResponseEntity<>(doctorSlot, HttpStatus.CREATED);
     }
 

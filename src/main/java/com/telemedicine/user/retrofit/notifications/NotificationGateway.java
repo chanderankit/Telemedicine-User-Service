@@ -21,14 +21,16 @@ public class NotificationGateway {
         Response<NotificationResponse> response;
         try {
             log.info("-------------NotificationGateway:sendNotification::sending mail to -> {}---", request.getTo());
-            response = notificationClient.sendNotification(request, type).blockingGet();
+            response = notificationClient.sendNotification(request, type).execute();
         } catch (Exception e) {
+            log.error("-------------NotificationGateway:sendNotification--------");
             throw new BusinessException(ErrorCodes.CONNECTION_FAILED, HttpStatus.BAD_REQUEST);
         }
 
         if (response.isSuccessful()) {
             return response.body();
         }
+        log.error("-------------NotificationGateway:sendNotification--------");
         throw new BusinessException(ErrorCodes.CONNECTION_FAILED, HttpStatus.BAD_REQUEST);
     }
 
